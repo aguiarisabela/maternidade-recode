@@ -1,0 +1,30 @@
+/*CONTEINER DE IMAGENS*/
+.images-container {
+    background-color: white;
+    padding: 20px 0px;  /*redefinir, se quiser*/
+    margin: 0;
+    width: 100%;
+}
+
+.multi-banner-images-4  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white; /*redefinir, se quiser*/
+    padding: 0px;
+    margin: 0;
+}
+
+.images-item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
+}
+
+.images-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;                          /*remover, se quiser*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /*remover, se quiser*/
+    filter: grayscale(100%);                     /*remover, se quiser*/
+}
