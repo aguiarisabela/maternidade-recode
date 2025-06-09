@@ -3,27 +3,33 @@
   background-color: #cd8054;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Alinha logo à esquerda e menu à direita */
+  justify-content: space-between;
   padding: 10px 20px;
+  position: relative;
+  z-index: 1001;
 }
 
 .logo {
-  margin-right: 20px; /* Espaço entre a logo e o menu */
+  margin-right: 20px;
 }
 
 .logo img {
   max-width: 135px;
   width: auto;
-  height: auto; /* Garante proporção correta */
+  height: auto;
 }
 
 .cabecalho {
   background-color: transparent;
-  flex-grow: 1; /* Permite que o menu ocupe o espaço restante */
+  flex-grow: 1;
 }
 
-/* Menu de Navegação */
-.navbar-nav .nav-link {
+/* Menu de Navegação Desktop */
+.desktop-nav {
+  display: flex !important;
+}
+
+.desktop-nav .navbar-nav .nav-link {
   color: #f6e2d4;
   font-weight: bold;
   text-decoration: none;
@@ -31,7 +37,7 @@
   transition: color 0.3s ease;
 }
 
-.navbar-nav .nav-link:hover {
+.desktop-nav .navbar-nav .nav-link:hover {
   color: #f0d6bf;
 }
 
@@ -86,53 +92,87 @@
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Menu Suspenso */
-.custom-collapse.show {
+/* Barra Lateral Mobile */
+.sidebar-nav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
   background-color: #f6e2d4;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  display: none; /* Escondido por padrão */
 }
 
-.custom-collapse .nav-link {
+.sidebar-nav.show {
+  left: 0;
+  display: block; /* Mostra ao abrir */
+}
+
+.sidebar-nav .navbar-nav {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.sidebar-nav .nav-link {
   color: #976b48;
   font-size: 1.2rem;
-  padding: 15px 30px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 8px;
+  padding: 10px 0;
+  width: 100%;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-.custom-collapse .nav-link:hover {
-  background-color: #cd8054;
-  color: #f0d6bf;
+.sidebar-nav .nav-link:hover {
+  color: #cc6200;
+  background-color: #e8c7b4;
+}
+
+/* Botão de Fechar */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #976b48;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #cc6200;
 }
 
 /* Responsividade */
 @media (max-width: 991px) {
   .header-principal {
     flex-direction: column;
-    align-items: flex-start; /* Alinha tudo à esquerda em telas pequenas */
+    align-items: flex-start;
   }
 
   .logo {
-    margin-bottom: 10px; /* Espaço abaixo da logo em telas pequenas */
+    margin-bottom: 10px;
   }
 
-  .custom-collapse.show {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    transform: none; /* Remove o translateX para alinhar à esquerda */
-    width: 100%;
-    z-index: 1000;
+  .desktop-nav {
+    display: none !important; /* Esconde o desktop em mobile */
+  }
+
+  .sidebar-nav {
+    display: block; /* Habilita a barra em mobile */
   }
 }
 
 @media (min-width: 992px) {
-  .custom-collapse .navbar-nav {
-    flex-direction: row;
+  .sidebar-nav {
+    display: none !important; /* Esconde a barra em desktop */
   }
 
-  .custom-collapse .nav-link {
-    color: #f6e2d4;
-    font-size: 16px;
+  .desktop-nav {
+    display: flex !important; /* Mostra o desktop em telas grandes */
   }
 }
