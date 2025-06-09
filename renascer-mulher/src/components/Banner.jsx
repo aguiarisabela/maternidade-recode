@@ -1,7 +1,7 @@
 import banner1 from '../assets/Renascer Mulher.png';
 import banner2 from '../assets/pregnant-woman-ai-generated-image.jpg';
 import banner3 from '../assets/young-mom-holding-her-baby-air-blank-space.jpg';
-import '../styles/style.css';
+import '../styles/style-banner.css';
 
 function Banner() {
   return (

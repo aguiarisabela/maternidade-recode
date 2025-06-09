@@ -1,0 +1,138 @@
+/* Cabeçalho */
+.header-principal {
+  background-color: #cd8054;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Alinha logo à esquerda e menu à direita */
+  padding: 10px 20px;
+}
+
+.logo {
+  margin-right: 20px; /* Espaço entre a logo e o menu */
+}
+
+.logo img {
+  max-width: 135px;
+  width: auto;
+  height: auto; /* Garante proporção correta */
+}
+
+.cabecalho {
+  background-color: transparent;
+  flex-grow: 1; /* Permite que o menu ocupe o espaço restante */
+}
+
+/* Menu de Navegação */
+.navbar-nav .nav-link {
+  color: #f6e2d4;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f0d6bf;
+}
+
+/* Botão Hamburguer */
+.custom-toggler {
+  border: none;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.custom-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(151, 107, 72, 0.5);
+}
+
+.custom-toggler .navbar-toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #f6e2d4;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.custom-toggler .navbar-toggler-icon::before,
+.custom-toggler .navbar-toggler-icon::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background-color: #f6e2d4;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.custom-toggler .navbar-toggler-icon::before {
+  top: -10px;
+}
+
+.custom-toggler .navbar-toggler-icon::after {
+  bottom: -10px;
+}
+
+.custom-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  background-color: transparent;
+}
+
+.custom-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.custom-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Menu Suspenso */
+.custom-collapse.show {
+  background-color: #f6e2d4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-collapse .nav-link {
+  color: #976b48;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px;
+}
+
+.custom-collapse .nav-link:hover {
+  background-color: #cd8054;
+  color: #f0d6bf;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .header-principal {
+    flex-direction: column;
+    align-items: flex-start; /* Alinha tudo à esquerda em telas pequenas */
+  }
+
+  .logo {
+    margin-bottom: 10px; /* Espaço abaixo da logo em telas pequenas */
+  }
+
+  .custom-collapse.show {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: none; /* Remove o translateX para alinhar à esquerda */
+    width: 100%;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 992px) {
+  .custom-collapse .navbar-nav {
+    flex-direction: row;
+  }
+
+  .custom-collapse .nav-link {
+    color: #f6e2d4;
+    font-size: 16px;
+  }
+}

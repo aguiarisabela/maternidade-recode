@@ -1,0 +1,20 @@
+/* Rodapé */
+footer {
+  background-color: #f0d6bf;
+  padding: 20px;
+  text-align: center;
+  max-width: auto;
+}
+
+.rede-socais a {
+  color: #976b48;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+footer a {
+  color: #976b48;
+  font-weight: bold;
+  text-decoration: none;
+}
