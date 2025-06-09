@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fffaf7;
+}
+
+.cabecalho {
+  background-color: #cd8054;
+}
+
+.container-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand img {
+  max-width: 135px;
+  width: auto;
+}
+
+.navbar {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar a {
+  font-family: "Poppins", serif;
+  color: #f6e2d4;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar a:hover {
+  color: #f0d6bf;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+}
+
+.corpo {
+  margin: 25px;
+  padding: 10px 20px;
+}
+
+.btn.faca-login.btn-primary {
+  background-color: #cd8054;
+  border: none;
+  font-family: "Poppins", serif;
+}
+
+.btn.faca-login.btn-primary a {
+  text-decoration: none;
+  color: #fffaf7;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  font-weight: bold;
+  font-family: "Poppins", serif;
+  background-color: #f0d6bf;
+  color: #cd8054;
+}
+
+.btn[disabled] {
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .images-item {
+    width: 45%;
+  }
+
+  .container-header {
+    flex-wrap: wrap;
+  }
+
+  .submit {
+    margin-left: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar a {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .images-container {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .images-item {
+    width: 100%;
+  }
+
+  .container-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: end;
+  }
+
+  .logo img {
+    max-width: 150px;
+  }
+
+  button a {
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .valores-objetivo {
+    padding: 1rem;
+  }
+
+  .valor-cards {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .valor-card {
+    width: 80%;
+  }
+
+  .valor-card img {
+    width: 100%;
+    height: 230px;
+    border-radius: 8px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+
+  .submit {
+    margin-left: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .input {
+    width: 20%;
+  }
+
+  .submit {
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 400px) {
+  .input {
+    width: 20%;
+  }
+
+  .submit {
+    margin-left: 60px;
+  }
+}
