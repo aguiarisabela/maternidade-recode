@@ -1,4 +1,4 @@
-function AccessibilityMenu() {
+/*function AccessibilityMenu() {
   return (
     <div className="accessibility-menu">
       <button className="accessibility-btn" aria-label="Abrir menu de acessibilidade">
@@ -13,4 +13,4 @@ function AccessibilityMenu() {
   );
 }
 
-export default AccessibilityMenu;
+export default AccessibilityMenu;*/

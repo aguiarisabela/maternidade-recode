@@ -1,7 +1,7 @@
 import Card from './Card.jsx';
 import imgEmpoderamento from '../assets/gravidez.jpg';
 import imgEmpatia from '../assets/maternidade.png';
-import '../styles/style.css';
+import '../styles/style-sobre.css';
 
 function SobreContent() {
   return (

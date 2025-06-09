@@ -38,6 +38,11 @@ function Header() {
               <li className="nav-item">
                 <Link className="nav-link" to="/contato">Contatos</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  <i className="fas fa-sign-in-alt"></i> Login
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

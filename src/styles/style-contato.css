@@ -1,0 +1,109 @@
+.corpo {
+  padding: 40px 20px;
+  margin: 0 auto;
+}
+
+.form {
+  background-color: #f6e2d4;
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #976b48;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #cd8054;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #cc6200;
+  box-shadow: 0 0 5px rgba(204, 98, 0, 0.5);
+}
+
+label span {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background-color: #f6e2d4;
+  padding: 0 5px;
+  font-size: 0.9rem;
+  color: #6a6a6a;
+}
+
+.textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit-contato {
+  background-color: #976b48;
+  color: #f0d6bf;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-contato:hover {
+  background-color: #cc6200;
+  transform: translateY(-2px);
+}
+
+/* Estilos das imagens */
+.images-container {
+  margin-top: 30px;
+}
+
+.images-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.images-item img:hover {
+  filter: grayscale(0%);
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .form {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .images-container .col-6 {
+    width: 100%;
+  }
+
+  .images-container {
+    gap: 15px;
+    padding: 10px;
+  }
+}

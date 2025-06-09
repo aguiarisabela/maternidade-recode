@@ -1,181 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./imagens/logo3.png" type="image/png">
-    <title>Comunidade de Mães</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo3.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="style-acessibilidade.css">
-
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-</head>
-<body>
-    <!-- Cabeçalho -->
-    <header class="header-principal">
-        <a href="index.html" class="logo">
-            <img src="imagens/logo3.png" alt="Logo Comunidade de Mães">
-        </a>
-        <nav class="navbar navbar-expand-lg cabecalho">
-            <div class="container-fluid">
-                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse custom-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-                        <li class="nav-item"><a class="nav-link" href="desafios.html">Desafios da Maternidade</a></li>
-                        <li class="nav-item"><a class="nav-link" href="comunidade.html">Comunidade</a></li>
-                        <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre Nós</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contato.html">Contatos</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-
-    <!-- Botão de Acessibilidade Flutuante -->
-    <div class="accessibility-menu">
-        <button class="accessibility-btn" aria-label="Abrir menu de acessibilidade">
-            <i class="bi bi-universal-access-circle"></i>
-        </button>
-        <div class="accessibility-options" id="accessibilityOptions">
-            <button id="increaseFont">Aumentar Fonte</button>
-            <button id="decreaseFont">Diminuir Fonte</button>
-            <button id="highContrast">Alto Contraste</button>
-        </div>
-    </div>
-
-    <!-- Início do banner-->
-    <div class="banner">
-        <img src="imagens/Renascer Mulher.png" alt="" srcset="" />
-    <!-- Banner (Carrossel) -->
-<div id="bannerCarousel" class="banner carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="imagens/Renascer Mulher.png" class="d-block w-100" alt="Bem-vinda à Comunidade de Mães" loading="lazy">
-        </div>
-        <div class="carousel-item">
-            <img src="imagens/pregnant-woman-ai-generated-image.jpg" class="d-block w-100" alt="Cuidados na Gravidez" loading="lazy">
-        </div>
-        <div class="carousel-item">
-            <img src="imagens/young-mom-holding-her-baby-air-blank-space.jpg" class="d-block w-100" alt="Primeiros Passos da Maternidade" loading="lazy">
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Próximo</span>
-    </button>
-</div>
-
-    <!-- Conteúdo Principal -->
-    <main class="corpo">
-        <section class="sobre text-center p-4 shadow rounded">
-            <div class="sobre-objetivo mx-auto">
-                <h2>Sobre Nós</h2>
-                <div class="divider mx-auto"></div>
-                <p>
-                    Nosso objetivo é criar um espaço acolhedor para compartilhar informações e experiências sobre as dificuldades da gravidez, desafios e dicas da maternidade. Queremos oferecer apoio para que você se sinta ouvida e encorajada a enfrentar os altos e baixos dessa fase tão especial. Além disso, disponibilizamos conteúdos sobre cuidados com a saúde durante a gestação e orientações práticas para o dia a dia com o bebê.
-                </p>
-                <button><a href="sobre.html">Saiba Mais</a></button>
-            </div>
-        </section>
-
-        <div class="row justify-content-center">
-            <section class="secoes-principais col-md-6 text-left">
-                <div class="gravidez-etapas">
-                    <h2 class="subtitulos-principais">Gravidez: Etapas e Cuidados</h2>
-                    <div class="divider"></div>
-                    <p>
-                        A gravidez é uma jornada de transformações. Cada etapa traz sintomas comuns, como náuseas, fadiga e mudanças de humor, que podem ser aliviados com cuidados simples. Manter uma alimentação equilibrada, exercícios leves e atenção à saúde mental são essenciais para garantir o bem-estar da mãe e do bebê. Saiba mais sobre como cuidar de você em cada fase para uma gestação saudável!
-                    </p>
-                    <button><a href="gravidez.html">Sintomas e Cuidados</a></button>
-                </div>
-            </section>
-        </div>
-
-        <div class="row justify-content-center">
-            <section class="secoes-principais col-md-6 text-left">
-                <div class="gravidez-etapas">
-                    <h2 class="subtitulos-principais">Maternidade: Primeiros Passos</h2>
-                    <div class="divider"></div>
-                    <p>
-                        Os primeiros meses com o bebê são cheios de aprendizados. Amamentação, sono e cuidados básicos podem ser desafiadores, mas com dicas práticas e apoio, você pode tornar essa fase mais leve. Descubra como se preparar para os primeiros passos da maternidade e criar uma rotina saudável para você e seu filho.
-                    </p>
-                    <button><a href="maternidade.html">Dicas Práticas</a></button>
-                </div>
-            </section>
-        </div>
-
-        <section class="sobre text-center p-4 shadow rounded">
-            <div class="sobre-objetivo mx-auto">
-                <h2>Junte-se à Nossa Comunidade</h2>
-                <div class="divider mx-auto"></div>
-                <p>
-                    Compartilhe suas experiências, encontre apoio e dicas de especialistas sobre maternidade, cuidados com o bebê e muito mais. Juntos, vamos construir uma jornada mais leve e informada para você e seu filho.
-                </p>
-                <button><a href="comunidade.html" class="botao glow">Faça parte agora!</a></button>
-            </div>
-        </section>
-
-        <div class="images-container text-center py-3">
-            <div class="row g-2">
-                <div class="col-6 col-md-3">
-                    <div class="images-item"><img src="imagens/gravidez.jpg" class="img-fluid rounded shadow" alt="Gravidez" loading="lazy"></div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="images-item"><img src="imagens/cuidados-gestacao.jpg" class="img-fluid rounded shadow" alt="Cuidados na Gestação" loading="lazy"></div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="images-item"><img src="imagens/maternidade.png" class="img-fluid rounded shadow" alt="Maternidade" loading="lazy"></div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="images-item"><img src="imagens/bebe-amamentacao.png" class="img-fluid rounded shadow" alt="Amamentação" loading="lazy"></div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Rodapé -->
-    <footer class="rodape">
-        <div class="container-rodape">
-            <div class="rede-socais">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div class="direitos">
-                <div id="direito-criado">&copy; 2025 | Criado pela <span>SQUAD - 12</span> | Todos os direitos reservados</div>
-                <div id="termos-privacidade">
-                    <a href="#">Privacidade e Política</a><br/>
-                    <a href="#">Termos</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Fim do Rodapé -->
-
-    <script src="js/script.js"></script>
-   
-</body>
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/your-kit-id.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Renascer Mulher</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="/src/scripts/header.js" defer></script>
+    <script src="/src/scripts/acessibilidade.js"></script>
+  </body>
 </html>

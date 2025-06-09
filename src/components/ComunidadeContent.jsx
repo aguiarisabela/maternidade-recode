@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import PostCard from './PostCard.jsx';
 import Categories from './Categories.jsx';
+import '../styles/style-comunidade.css';
 
 function ComunidadeContent() {
   return (
@@ -10,7 +11,7 @@ function ComunidadeContent() {
           <div className="card mb-3">
             <div className="card-body text-center">
               <button className="btn faca-login btn-primary">
-                <Link to="/formulario">Faça login para criar um post</Link>
+                <Link to="/login">Faça login para criar um post</Link>
               </button>
             </div>
           </div>
