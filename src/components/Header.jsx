@@ -19,7 +19,7 @@ function Header() {
             aria-expanded="false"
             aria-label="Abrir menu de navegação"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="material-icons">menu</span>
           </button>
           {/* Menu Desktop */}
           <div className="collapse navbar-collapse desktop-nav" id="desktopNav">
@@ -41,7 +41,7 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
-                  <i className="fas fa-sign-in-alt"></i> Login
+                  <span className="material-icons">login</span> Login
                 </Link>
               </li>
             </ul>
@@ -49,7 +49,7 @@ function Header() {
           {/* Barra Lateral Mobile */}
           <div className="collapse navbar-collapse sidebar-nav" id="sidebarNav">
             <button className="close-btn" aria-label="Fechar menu">
-              <span>×</span>
+              <span className="material-icons">close</span>
             </button>
             <ul className="navbar-nav">
               <li className="nav-item">
@@ -69,7 +69,7 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
-                  <i className="fas fa-sign-in-alt"></i> Login
+                  <span className="material-icons">login</span> Login
                 </Link>
               </li>
             </ul>

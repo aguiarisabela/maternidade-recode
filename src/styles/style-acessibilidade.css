@@ -1,107 +1,118 @@
-:root {
-  font-size: 16px; /* Tamanho base para rem */
-}
-
-/* Estilo do botão de acessibilidade */
-.accessibility-menu {
+.acessibilidade-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 2000;
 }
 
-.accessibility-btn {
-  background-color: #976b48;
+.acessibilidade-btn {
+  background-color: #cd8054;
   border: none;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #f6e2d4;
+  font-size: 24px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
-.accessibility-btn:hover {
-  background-color: #cc6200;
+.acessibilidade-btn:hover {
+  transform: scale(1.1);
 }
 
-.accessibility-icon {
-  width: 30px;
-  height: 30px;
-  filter: invert(
-    100%
-  ); /* Para garantir que o ícone seja visível no fundo escuro */
-}
-
-.accessibility-btn .bi {
-  color: #f0d6bf; /* Cor do ícone (exemplo: tom claro do seu tema) */
-  font-size: 30px; /* Tamanho do ícone (ajuste conforme necessário) */
-}
-
-/* Opcional: Mudar a cor ao passar o mouse */
-.accessibility-btn:hover .bi {
-  color: #fff; /* Cor ao passar o mouse */
-}
-
-/* Menu de opções de acessibilidade */
-.accessibility-options {
-  display: none;
+.acessibilidade-menu {
   position: absolute;
   bottom: 60px;
   right: 0;
   background-color: #f6e2d4;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  gap: 10px;
-}
-
-.accessibility-options.active {
-  display: flex;
-}
-
-.accessibility-options button {
-  background-color: #976b48;
-  color: #f0d6bf;
-  border: none;
-  padding: 8px 12px;
   border-radius: 5px;
-  font-family: "Poppins", serif;
-  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.acessibilidade-menu button {
+  background: none;
+  border: none;
+  color: #976b48;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
 }
 
-.accessibility-options button:hover {
-  background-color: #cc6200;
+.acessibilidade-menu button:hover {
+  background-color: #e8c7b4;
+  border-radius: 3px;
 }
 
-/* Estilo para modo de alto contraste */
-.high-contrast body {
+.material-icons {
+  font-size: 30px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos globais de acessibilidade */
+.high-contrast {
   background-color: #000 !important;
   color: #fff !important;
 }
 
-.high-contrast .cabecalho {
-  background-color: #000 !important;
-}
-
-.high-contrast .navbar a,
+.high-contrast .navbar-nav .nav-link,
+.high-contrast .sidebar-nav .nav-link,
+.high-contrast button,
+.high-contrast a,
 .high-contrast p,
-.high-contrast footer {
+.high-contrast span {
   color: #fff !important;
+  border-color: #fff !important;
 }
 
-.high-contrast .sobre,
-.high-contrast .valores {
-  background-color: #333 !important;
+.dark-mode {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
 }
 
-.high-contrast button {
-  background-color: #fff !important;
-  color: #000 !important;
+.dark-mode .navbar-nav .nav-link,
+.dark-mode .sidebar-nav .nav-link,
+.dark-mode button,
+.dark-mode a,
+.dark-mode p,
+.dark-mode span {
+  color: #e0e0e0 !important;
+  border-color: #e0e0e0 !important;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .acessibilidade-container {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .acessibilidade-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .acessibilidade-menu {
+    bottom: 50px;
+    padding: 5px;
+  }
+
+  .acessibilidade-menu button {
+    font-size: 14px;
+  }
+
+  .material-icons {
+    font-size: 18px;
+  }
 }

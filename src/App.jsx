@@ -7,11 +7,13 @@ import Sobre from './pages/Sobre.jsx';
 import Contato from './pages/Contato.jsx';
 import Login from './pages/Login.jsx';
 import Cadastro from './pages/Cadastro.jsx';
+import Acessibilidade from './components/AccessibilityMenu.jsx';
 
 
 function App() {
   return (
     <Router>
+      <Acessibilidade />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/desafios" element={<Desafios />} />
