@@ -1,7 +1,7 @@
-import Header from '../components/Header.jsx';
-//import AccessibilityMenu from '../components/AccessibilityMenu.jsx';
-import ComunidadeContent from '../components/ComunidadeContent.jsx';
-import Footer from '../components/Footer.jsx';
+import React from 'react';
+import Header from '../components/Header';
+import ComunidadeContent from '../components/ComunidadeContent';
+import Footer from '../components/Footer';
 
 function Comunidade() {
   return (

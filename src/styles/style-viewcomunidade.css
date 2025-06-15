@@ -10,6 +10,11 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.fixed-width-card {
+  width: 400px; /* Largura fixa de 400px */
+  margin-bottom: 20px;
+}
+
 .post-header {
   display: flex;
   align-items: center;
@@ -31,11 +36,6 @@
 .post-attachment {
   max-width: 100%;
   margin-top: 10px;
-}
-
-.fixed-width-card {
-  width: 900px;
-  margin-bottom: 20px;
 }
 
 .post-actions {
@@ -77,6 +77,11 @@
 
   .post-attachment {
     max-width: 100%;
+  }
+
+  .fixed-width-card {
+    width: 100%; /* Ajusta para 100% em telas menores */
+    max-width: 400px; /* Mantém o máximo de 400px */
   }
 
   .col-md-4 {

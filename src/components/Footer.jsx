@@ -6,7 +6,7 @@ function Footer() {
     <footer className="rodape">
       <div className="container-rodape">
         <div className="rede-socais">
-          <a href="#"><i className="fab fa-github"></i></a>
+          <a href="https://github.com/aguiarisabela/maternidade-recode"><i className="fab fa-github"></i></a>
           <a href="#"><i className="fab fa-instagram"></i></a>
         </div>
         <div className="direitos">

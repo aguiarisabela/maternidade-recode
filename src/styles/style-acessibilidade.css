@@ -59,37 +59,67 @@
     align-items: center;
 }
 
-/* Estilos globais de acessibilidade */
-.high-contrast {
-  background-color: #000 !important;
+/* --- Modo Noturno: Preto & Branco --- */
+body.dark-mode,
+.dark-mode .header-principal,
+.dark-mode .cabecalho,
+.dark-mode .desktop-nav,
+.dark-mode .sidebar-nav,
+.dark-mode .card,
+.dark-mode footer {
+  background-color: #111 !important;
   color: #fff !important;
 }
 
-.high-contrast .navbar-nav .nav-link,
-.high-contrast .sidebar-nav .nav-link,
-.high-contrast button,
-.high-contrast a,
-.high-contrast p,
-.high-contrast span {
+.dark-mode .nav-link,
+.dark-mode .close-btn,
+.dark-mode .material-icons,
+.dark-mode .logo,
+.dark-mode .navbar-nav .nav-link {
   color: #fff !important;
-  border-color: #fff !important;
 }
 
-.dark-mode {
-  background-color: #121212 !important;
-  color: #e0e0e0 !important;
+.dark-mode .card {
+  background-color: #222 !important;
+  color: #fff !important;
+  border-color: #444 !important;
 }
 
-.dark-mode .navbar-nav .nav-link,
-.dark-mode .sidebar-nav .nav-link,
-.dark-mode button,
-.dark-mode a,
-.dark-mode p,
-.dark-mode span {
-  color: #e0e0e0 !important;
-  border-color: #e0e0e0 !important;
+.dark-mode footer {
+  background-color: #111 !important;
+  color: #fff !important;
 }
 
+/* --- Alto Contraste: Cinza & Branco --- */
+body.high-contrast,
+.high-contrast .header-principal,
+.high-contrast .cabecalho,
+.high-contrast .desktop-nav,
+.high-contrast .sidebar-nav,
+.high-contrast .card,
+.high-contrast footer {
+  background-color: #fff !important;
+  color: #222 !important;
+}
+
+.high-contrast .nav-link,
+.high-contrast .close-btn,
+.high-contrast .material-icons,
+.high-contrast .logo,
+.high-contrast .navbar-nav .nav-link {
+  color: #222 !important;
+}
+
+.high-contrast .card {
+  background-color: #eee !important;
+  color: #222 !important;
+  border-color: #bbb !important;
+}
+
+.high-contrast footer {
+  background-color: #eee !important;
+  color: #222 !important;
+}
 /* Responsividade */
 @media (max-width: 991px) {
   .acessibilidade-container {

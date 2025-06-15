@@ -8,7 +8,7 @@ import Contato from './pages/Contato.jsx';
 import Login from './pages/Login.jsx';
 import Cadastro from './pages/Cadastro.jsx';
 import Acessibilidade from './components/AccessibilityMenu.jsx';
-
+import ViewComunidade from './components/ViewComunidade.jsx';
 
 function App() {
   return (
@@ -17,11 +17,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/desafios" element={<Desafios />} />
-        <Route path="/comunidade" element={<Comunidade />} />
+        <Route path="/comunidade-login" element={<Comunidade />} />
         <Route path="/sobre" element={<Sobre/>} />
         <Route path="/contato" element={<Contato/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/comunidade" element={<ViewComunidade />} />
       </Routes>
     </Router>
   );
