@@ -23,7 +23,7 @@ function Login() {
         setMessage(response.data);
         if (response.data.includes('bem-sucedido')) {
           localStorage.setItem('token', 'dummy-token-123');
-          window.location.href = '/comunidade';
+          window.location.href = '/comunidade-login';
         }
       })
       .catch(error => {

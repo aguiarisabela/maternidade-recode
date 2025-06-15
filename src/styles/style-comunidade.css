@@ -10,6 +10,11 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.fixed-width-card {
+  width: 900px;
+  margin-bottom: 20px;
+}
+
 .post-header {
   display: flex;
   align-items: center;
@@ -33,11 +38,6 @@
   margin-top: 10px;
 }
 
-.fixed-width-card {
-  width: 900px;
-  margin-bottom: 20px;
-}
-
 .post-actions {
   margin-top: 10px;
 }
@@ -49,6 +49,59 @@
 
 .post-actions .btn-link:hover {
   color: #a55a3a;
+}
+
+.comment-section {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  color: #976b48;
+}
+
+.btn-primary {
+  background-color: #cd8054;
+  border-color: #cd8054;
+}
+
+.btn-primary:hover {
+  background-color: #a55a3a;
+  border-color: #a55a3a;
+}
+
+.btn-warning {
+  background-color: #f0c14b;
+  border-color: #f0c14b;
+}
+
+.btn-warning:hover {
+  background-color: #e0a82e;
+  border-color: #e0a82e;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #218838;
 }
 
 .attachments-preview img {
@@ -77,6 +130,11 @@
 
   .post-attachment {
     max-width: 100%;
+  }
+
+  .fixed-width-card {
+    width: 100%;
+    max-width: 900px;
   }
 
   .col-md-4 {
