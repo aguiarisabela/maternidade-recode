@@ -5,53 +5,62 @@ import Categories from './Categories';
 import '../styles/style-comunidade.css';
 
 function ComunidadeContent() {
-  // Estado para guardar os posts do backend
   const [posts, setPosts] = useState([]);
-  // Estado para o formulário de novo post
   const [novoPost, setNovoPost] = useState({ titulo: '', conteudo: '' });
-  // Estado para o anexo (arquivo de imagem)
   const [anexo, setAnexo] = useState(null);
+  const [message, setMessage] = useState('');
 
-  // Função para buscar posts do backend
-  const buscarPosts = async () => {
-    try {
-      const resposta = await axios.get('http://localhost:8080/api/posts');
-      setPosts(resposta.data);
-    } catch (erro) {
-      console.log('Erro ao buscar posts:', erro);
-    }
-  };
-
-  // Carrega os posts quando a página abre
   useEffect(() => {
-    buscarPosts();
+    const fetchPosts = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:8080/api/posts', {
+          headers: { 'Authorization': token }
+        });
+        setPosts(response.data);
+      } catch (error) {
+        setMessage('Erro ao carregar posts: ' + (error.response?.data || error.message));
+      }
+    };
+    fetchPosts();
   }, []);
 
-  // Atualiza o formulário quando o usuário digita
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNovoPost({ ...novoPost, [name]: value });
   };
 
-  // Atualiza o anexo quando o usuário seleciona um arquivo
   const handleFileChange = (e) => {
     setAnexo(e.target.files[0]);
   };
 
-  // Envia o novo post para o backend
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setMessage('Você precisa estar logado para postar.');
+      return;
+    }
+
+    const data = new FormData();
+    data.append('post', new Blob([JSON.stringify(novoPost)], { type: 'application/json' }));
+    if (anexo) {
+      data.append('imagem', anexo);
+    }
+
     try {
-      // Envia apenas título e conteúdo por enquanto (anexo será tratado depois)
-      await axios.post('http://localhost:8080/api/posts', {
-        titulo: novoPost.titulo,
-        conteudo: novoPost.conteudo
+      const response = await axios.post('http://localhost:8080/api/posts', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': token
+        }
       });
-      setNovoPost({ titulo: '', conteudo: '' }); // Limpa o formulário
-      setAnexo(null); // Limpa o anexo
-      buscarPosts(); // Atualiza a lista de posts
-    } catch (erro) {
-      console.log('Erro ao criar post:', erro);
+      setPosts([response.data, ...posts]);
+      setNovoPost({ titulo: '', conteudo: '' });
+      setAnexo(null);
+      setMessage('Post criado com sucesso!');
+    } catch (error) {
+      setMessage('Erro ao criar post: ' + (error.response?.data || error.message));
     }
   };
 
@@ -85,9 +94,7 @@ function ComunidadeContent() {
                   onChange={handleFileChange}
                   accept="image/*,video/*,image/gif"
                 />
-                <button type="submit" className="btn btn-primary">
-                  Postar
-                </button>
+                <button type="submit" className="btn btn-primary">Postar</button>
                 {anexo && (
                   <div className="attachments-preview mt-2">
                     <img
@@ -99,19 +106,20 @@ function ComunidadeContent() {
                   </div>
                 )}
               </form>
+              {message && <p className="text-center text-danger">{message}</p>}
             </div>
           </div>
           {posts.map((post) => (
             <PostCard
               key={post.id}
               id={post.id}
-              author={post.autor?.nomeCompleto || 'Usuário'}
-              photo={post.autor?.fotoPerfil || 'https://via.placeholder.com/40'}
+              author={post.autor?.nomeCompleto || 'Usuário Desconhecido'}
+              photo={post.autor?.fotoPerfil ? `http://localhost:8080${post.autor.fotoPerfil}` : 'https://picsum.photos/40'}
               content={post.conteudo}
-              attachments={[]} // Temporário, até implementarmos anexos
-              likes={0} // Temporário, até implementarmos curtidas
-              comments={[]} // Temporário, até implementarmos comentários
-              isLoggedIn={true}
+              attachments={post.imagem ? [`http://localhost:8080${post.imagem}`] : []}
+              likes={post.likes || 0}
+              comments={post.comments || []}
+              isLoggedIn={!!localStorage.getItem('token')}
             />
           ))}
         </div>

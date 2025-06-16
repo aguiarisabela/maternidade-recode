@@ -10,26 +10,25 @@ function Login() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Enviando:', { username, password });
-    axios.post('http://localhost:8080/api/login', {
-      username: username,
-      password: password
-    }, {
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(response => {
-        setMessage(response.data);
-        if (response.data.includes('bem-sucedido')) {
-          localStorage.setItem('token', 'dummy-token-123');
-          window.location.href = '/comunidade-login';
-        }
-      })
-      .catch(error => {
-        const errorMsg = error.response?.data || error.message || 'Erro desconhecido';
-        setMessage('Erro ao logar: ' + (typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg)));
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', {
+        username: username,
+        password: password
+      }, {
+        headers: { 'Content-Type': 'application/json' }
       });
+      setMessage(response.data);
+      if (response.data.includes('Bearer')) {
+        const token = response.data; // e.g., "Bearer 2"
+        localStorage.setItem('token', token);
+        window.location.href = '/comunidade-login'; // Redirect after storing token
+      }
+    } catch (error) {
+      const errorMsg = error.response?.data || error.message || 'Erro desconhecido';
+      setMessage('Erro ao logar: ' + (typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg)));
+    }
   };
 
   return (
