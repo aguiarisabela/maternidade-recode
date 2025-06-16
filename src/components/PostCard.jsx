@@ -10,6 +10,7 @@ function PostCard({ id, author, photo, content, attachments, likes, comments, is
   useEffect(() => {
     setLocalLikes(likes);
     setLocalComments(comments);
+    console.log('PostCard props:', { id, author, photo, content, attachments, likes, comments }); // Debug log
   }, [likes, comments]);
 
   const handleLike = async () => {
@@ -53,7 +54,7 @@ function PostCard({ id, author, photo, content, attachments, likes, comments, is
         {attachments.length > 0 && (
           <div className="attachments mb-2">
             {attachments.map((attach, idx) => (
-              <img key={idx} src={attach} alt="Anexo" className="post-attachment img-thumbnail" />
+              <img key={idx} src={attach} alt="Anexo" className="post-attachment img-thumbnail" style={{ maxWidth: '100px', marginRight: '10px' }} />
             ))}
           </div>
         )}

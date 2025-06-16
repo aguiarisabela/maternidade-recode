@@ -17,6 +17,7 @@ function ComunidadeContent() {
         const response = await axios.get('http://localhost:8080/api/posts', {
           headers: { 'Authorization': token }
         });
+        console.log('Posts response:', response.data); // Debug log
         setPosts(response.data);
       } catch (error) {
         setMessage('Erro ao carregar posts: ' + (error.response?.data || error.message));
@@ -55,6 +56,7 @@ function ComunidadeContent() {
           'Authorization': token
         }
       });
+      console.log('Post response:', response.data); // Debug log
       setPosts([response.data, ...posts]);
       setNovoPost({ titulo: '', conteudo: '' });
       setAnexo(null);
@@ -117,8 +119,8 @@ function ComunidadeContent() {
               photo={post.autor?.fotoPerfil ? `http://localhost:8080${post.autor.fotoPerfil}` : 'https://picsum.photos/40'}
               content={post.conteudo}
               attachments={post.imagem ? [`http://localhost:8080${post.imagem}`] : []}
-              likes={post.likes}
-              comments={post.comments}
+              likes={post.likes || 0}
+              comments={post.comments || []}
               isLoggedIn={!!localStorage.getItem('token')}
             />
           ))}
