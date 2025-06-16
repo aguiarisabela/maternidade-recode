@@ -1,0 +1,90 @@
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-width-card {
+  width: 400px; /* Largura fixa de 400px */
+  margin-bottom: 20px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #976b48;
+}
+
+.post-attachment {
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+.post-actions {
+  margin-top: 10px;
+}
+
+.post-actions .btn-link {
+  color: #cd8054;
+  text-decoration: none;
+}
+
+.post-actions .btn-link:hover {
+  color: #a55a3a;
+}
+
+.attachments-preview img {
+  max-width: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.list-group-item {
+  background-color: #f6e2d4;
+  border: none;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .container {
+    padding: 10px;
+  }
+
+  .user-photo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .post-attachment {
+    max-width: 100%;
+  }
+
+  .fixed-width-card {
+    width: 100%; /* Ajusta para 100% em telas menores */
+    max-width: 400px; /* Mantém o máximo de 400px */
+  }
+
+  .col-md-4 {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,113 @@
+/* Estilos do formulário */
+.corpo {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form {
+  background-color: #f6e2d4;
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #976b48;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #cd8054;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #cc6200;
+  box-shadow: 0 0 5px rgba(204, 98, 0, 0.5);
+}
+
+label span {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background-color: #f6e2d4;
+  padding: 0 5px;
+  font-size: 0.9rem;
+  color: #6a6a6a;
+}
+
+.submit-login {
+  background-color: #976b48;
+  color: #f0d6bf;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-login:hover {
+  background-color: #cc6200;
+  transform: translateY(-2px);
+}
+
+.btn-gmail {
+  background-color: #db4437;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-gmail:hover {
+  background-color: #c23321;
+  transform: translateY(-2px);
+}
+
+.btn-gmail i {
+  font-size: 1.2rem;
+}
+
+.create-account {
+  color: #976b48;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.create-account:hover {
+  color: #cc6200;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .form {
+    padding: 20px;
+    max-width: 100%;
+  }
+}

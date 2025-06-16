@@ -1,0 +1,116 @@
+.corpo {
+  padding: 40px 20px;
+  margin: auto;
+}
+
+.sobre {
+  background-color: #f6e2d4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  max-width: 90%;
+  margin: 30px auto;
+  padding: 50px;
+}
+
+.sobre-objetivo {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sobre-objetivo h2,
+.subtitulos-principais {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.5;
+  color: #976b48;
+}
+
+.divider {
+  width: 100px;
+  height: 4px;
+  background-color: #cd8054;
+  margin: 20px auto;
+}
+
+p {
+  font-size: clamp(1rem, 3vw, 1.125rem);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #6a6a6a;
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  background-color: #976b48;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button a {
+  color: #f0d6bf;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #cc6200;
+  transform: translateY(-2px);
+}
+
+.secoes-principais {
+  padding: 20px;
+  margin: 30px auto;
+}
+
+/* Animação Glow */
+.glow {
+  animation: glow 1.5s infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px #976b48;
+  }
+  50% {
+    box-shadow: 0 0 15px #976b48;
+  }
+}
+
+/* Responsividade (ajustes específicos) */
+@media (max-width: 991px) {
+  .corpo {
+    padding: 20px 10px;
+  }
+
+  .sobre {
+    padding: 30px;
+    margin: 20px auto;
+  }
+
+  .sobre-objetivo {
+    max-width: 100%;
+  }
+
+  .row.justify-content-center {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .secoes-principais {
+    margin: 15px auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .row.justify-content-center {
+    justify-content: center;
+  }
+}

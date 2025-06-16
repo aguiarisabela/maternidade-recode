@@ -1,0 +1,189 @@
+/* Cabeçalho */
+.header-principal {
+  background-color: #cd8054;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1001;
+}
+
+/* Fontes */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+/* Logo */
+.logo {
+  margin-right: 20px;
+}
+
+.logo img {
+  max-width: 135px;
+  width: auto;
+  height: auto;
+}
+
+.cabecalho {
+  background-color: transparent;
+  flex-grow: 1;
+}
+
+/* Menu de Navegação Desktop */
+.desktop-nav {
+  display: flex !important;
+}
+
+.desktop-nav .navbar-nav .nav-link {
+  color: #f6e2d4;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.desktop-nav .navbar-nav .nav-link:hover {
+  color: #f0d6bf;
+}
+
+/* Botão Hamburguer */
+.custom-toggler {
+  border: none;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.custom-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(151, 107, 72, 0.5);
+}
+
+.custom-toggler .material-icons {
+  font-size: 30px;
+  color: #f6e2d4;
+  transition: all 0.3s ease;
+}
+
+.custom-toggler[aria-expanded="true"] .material-icons {
+  transform: rotate(90deg);
+}
+
+/* Barra Lateral Mobile */
+.sidebar-nav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #f6e2d4;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  display: none;
+}
+
+.sidebar-nav.show {
+  left: 0;
+  display: block;
+}
+
+.sidebar-nav .navbar-nav {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.sidebar-nav .nav-link {
+  color: #976b48;
+  font-size: 1.2rem;
+  padding: 10px 0;
+  width: 100%;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sidebar-nav .nav-link:hover {
+  color: #cc6200;
+  background-color: #e8c7b4;
+}
+
+/* Botão de Fechar */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #976b48;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn .material-icons {
+  font-size: 30px;
+}
+
+.close-btn:hover {
+  color: #cc6200;
+  color: #e8c7b4;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .header-principal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .sidebar-nav {
+    display: block;
+  }
+}
+
+
+@media (min-width: 991px) {
+  .sidebar-nav {
+    display: none !important;
+  }
+
+  .desktop-nav {
+    display: flex !important;
+  }
+
+  .logo {
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: 0;
+}}

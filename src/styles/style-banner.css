@@ -1,0 +1,40 @@
+/* Banner (Carrossel) */
+.banner {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.carousel-inner img {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #976b48;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.carousel-indicators .active {
+  background-color: #cd8054;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #976b48;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .banner {
+    max-height: 300px;
+  }
+
+  .carousel-inner img {
+    max-height: 300px;
+  }
+}
