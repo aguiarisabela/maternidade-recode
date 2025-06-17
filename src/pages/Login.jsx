@@ -10,9 +10,11 @@ function Login() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => { // Mantido 'async' embora a master use .then(), para consistência
     e.preventDefault();
     console.log('Enviando:', { username, password });
+
+    // Lógica da master para o post e tratamento da resposta
     axios.post('http://localhost:8080/api/login', {
       username: username,
       password: password
@@ -21,14 +23,15 @@ function Login() {
     })
       .then(response => {
         console.log('Resposta do servidor:', response.data);
-        const { message, userId } = response.data;
+        const { message, userId } = response.data; // Desestruturação da resposta
         setMessage(message);
         if (message === 'Login bem-sucedido' && userId) {
-          localStorage.setItem('userId', userId);
+          localStorage.setItem('userId', userId); // Armazena o userId
+          // Redireciona para /comunidade-login com o username
           window.location.href = `/comunidade-login?identifier=${encodeURIComponent(username)}`;
         }
       })
-      .catch(error => {
+      .catch(error => { // Tratamento de erro da master
         console.error('Erro na requisição:', error);
         const errorMsg = error.response?.data?.message || error.message || 'Erro desconhecido';
         setMessage('Erro ao logar: ' + (typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg)));

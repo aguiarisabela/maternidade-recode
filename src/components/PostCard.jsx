@@ -2,21 +2,26 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/style-comunidade.css';
 
+// Props adicionais da master: canEdit, onEdit, onDelete
 function PostCard({ id, author, photo, content, attachments, likes, comments, isLoggedIn, canEdit, onEdit, onDelete }) {
   const [localLikes, setLocalLikes] = useState(likes);
   const [localComments, setLocalComments] = useState(comments);
   const [commentInput, setCommentInput] = useState('');
+  // Estados para o modo de edição, vindos da master
   const [editMode, setEditMode] = useState(false);
   const [editContent, setEditContent] = useState(content);
 
   useEffect(() => {
     setLocalLikes(likes);
     setLocalComments(comments);
-  }, [likes, comments]);
+    // Remover o debug log se não for mais necessário
+    // console.log('PostCard props:', { id, author, photo, content, attachments, likes, comments });
+  }, [likes, comments, content]); // Adicione 'content' como dependência para o editContent iniciar corretamente
 
   const handleLike = async () => {
-    if (!isLoggedIn) return;
+    if (!isLoggedIn) return; // A lógica da master removeu a verificação de token aqui, apenas isLoggedIn.
     try {
+      // Endpoint e headers da master
       const response = await axios.post(`http://localhost:8080/posts/${id}/like`);
       setLocalLikes(response.data.likes);
     } catch (error) {
@@ -26,16 +31,20 @@ function PostCard({ id, author, photo, content, attachments, likes, comments, is
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    if (!commentInput.trim()) return;
+    if (!commentInput.trim()) return; // A master removeu a verificação isLoggedIn aqui
     try {
+      // Endpoint e dados do comentário da master
       const response = await axios.post(`http://localhost:8080/posts/${id}/comments`, { texto: commentInput });
-      setLocalComments([...localComments, commentInput]);
+      // Assumindo que a resposta do backend pode não retornar o objeto completo do comentário,
+      // mas se retornar, você pode fazer: setLocalComments([...localComments, response.data]);
+      setLocalComments([...localComments, commentInput]); // Manter assim se o backend só retorna sucesso
       setCommentInput('');
     } catch (error) {
       console.error('Erro ao comentar:', error);
     }
   };
 
+  // Funções de edição da master
   const handleEditSubmit = (e) => {
     e.preventDefault();
     onEdit(id, { conteudo: editContent });
@@ -49,6 +58,7 @@ function PostCard({ id, author, photo, content, attachments, likes, comments, is
           <img src={photo} alt={`${author} foto`} className="user-photo" />
           <span className="user-name">{author}</span>
         </div>
+        {/* Lógica condicional para modo de edição da master */}
         {editMode ? (
           <form onSubmit={handleEditSubmit}>
             <textarea
@@ -89,6 +99,7 @@ function PostCard({ id, author, photo, content, attachments, likes, comments, is
           {localComments.length > 0 && (
             <div className="mt-2">Comentários: {localComments.join(', ')}</div>
           )}
+          {/* Botões de edição/exclusão da master */}
           {canEdit && (
             <div className="mt-2">
               <button className="btn btn-warning btn-sm me-2" onClick={() => setEditMode(true)}>Editar</button>

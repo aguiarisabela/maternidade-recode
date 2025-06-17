@@ -1,9 +1,9 @@
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/style-cadastro.css';
-import axios from 'axios';
-import { useState } from 'react';
 
 function Cadastro() {
   const [formData, setFormData] = useState({
@@ -11,46 +11,48 @@ function Cadastro() {
     username: '',
     senha: '',
     email: '',
-    dataNascimento: '',
-    fotoPerfil: null,
-    newsletter: false,
-    termos: false
+    fotoPerfil: null, // Este campo não será enviado com a lógica do master
+    dataNascimento: ''
   });
   const [message, setMessage] = useState('');
+  const [preview, setPreview] = useState(null); // Este estado é para a prévia da foto, que não será enviada
 
   const handleChange = (e) => {
-    const { name, value, type, checked, files } = e.target;
-    if (type === 'checkbox') {
-      setFormData({ ...formData, [name]: checked });
-    } else if (type === 'file') {
-      setFormData({ ...formData, [name]: files[0] ? files[0].name : null });
+    const { name, value, files } = e.target;
+    if (name === 'fotoPerfil' && files) {
+      setFormData({ ...formData, [name]: files[0] });
+      setPreview(URL.createObjectURL(files[0]));
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { // Removido 'async' pois o .then() não requer
     e.preventDefault();
-    const dataToSend = {
+    const token = localStorage.getItem('token') || ''; // 'token' não está sendo usado nesta versão do master
+    const userData = { // Esta será a 'dataToSend'
       nomeCompleto: formData.nomeCompleto,
       username: formData.username,
       senha: formData.senha,
       email: formData.email,
-      dataNascimento: formData.dataNascimento,
-      fotoPerfil: formData.fotoPerfil
+      dataNascimento: formData.dataNascimento
     };
-    axios.post('http://localhost:8080/api/register', dataToSend, {
+
+    // Início da resolução do conflito, mantendo a lógica do master
+    axios.post('http://localhost:8080/api/register', userData, { // 'dataToSend' corrigido para 'userData'
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => {
         setMessage(response.data);
         if (response.data.includes('sucesso')) {
-          window.location.href = '/comunidade-login';
+          window.location.href = '/comunidade-login'; // Redireciona para /comunidade-login
         }
       })
-      .catch(error => {
-        setMessage('Erro ao cadastrar: ' + (error.response?.data || error.message));
+      .catch(error => { // Adicionado .catch() para tratamento de erro, que faltava na versão master original
+        const errorMsg = error.response?.data?.message || error.message || 'Erro desconhecido';
+        setMessage('Erro ao cadastrar: ' + (typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg)));
       });
+    // Fim da resolução do conflito
   };
 
   return (
@@ -63,7 +65,15 @@ function Cadastro() {
             <div className="row">
               <div className="col-12">
                 <label>
-                  <input required placeholder=" " type="text" className="input" name="nomeCompleto" onChange={handleChange} />
+                  <input
+                    required
+                    placeholder=" "
+                    type="text"
+                    className="input"
+                    name="nomeCompleto"
+                    value={formData.nomeCompleto}
+                    onChange={handleChange}
+                  />
                   <span>Nome Completo</span>
                 </label>
               </div>
@@ -71,7 +81,15 @@ function Cadastro() {
             <div className="row">
               <div className="col-12">
                 <label>
-                  <input required placeholder=" " type="text" className="input" name="username" onChange={handleChange} />
+                  <input
+                    required
+                    placeholder=" "
+                    type="text"
+                    className="input"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                  />
                   <span>Username</span>
                 </label>
               </div>
@@ -79,7 +97,15 @@ function Cadastro() {
             <div className="row">
               <div className="col-12">
                 <label>
-                  <input required placeholder=" " type="password" className="input" name="senha" onChange={handleChange} />
+                  <input
+                    required
+                    placeholder=" "
+                    type="password"
+                    className="input"
+                    name="senha"
+                    value={formData.senha}
+                    onChange={handleChange}
+                  />
                   <span>Senha</span>
                 </label>
               </div>
@@ -87,7 +113,15 @@ function Cadastro() {
             <div className="row">
               <div className="col-12">
                 <label>
-                  <input required placeholder=" " type="email" className="input" name="email" onChange={handleChange} />
+                  <input
+                    required
+                    placeholder=" "
+                    type="email"
+                    className="input"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
                   <span>E-mail</span>
                 </label>
               </div>
@@ -95,44 +129,63 @@ function Cadastro() {
             <div className="row">
               <div className="col-12">
                 <label>
-                  <input type="file" accept="image/*" className="input-file" name="fotoPerfil" onChange={handleChange} />
+                  <input
+                    type="file"
+                    className="input"
+                    name="fotoPerfil"
+                    onChange={handleChange}
+                  />
                   <span>Foto de Perfil</span>
+                  {preview && <img src={preview} alt="Prévia" className="img-thumbnail mt-2" style={{ maxWidth: '100px' }} />}
                 </label>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <label>
-                  <input required type="date" className="input" name="dataNascimento" onChange={handleChange} />
+                  <input
+                    required
+                    placeholder=" "
+                    type="date"
+                    className="input"
+                    name="dataNascimento"
+                    value={formData.dataNascimento}
+                    onChange={handleChange}
+                  />
                   <span>Data de Nascimento</span>
                 </label>
               </div>
             </div>
             <div className="row">
-              <div className="col-12">
-                <label className="checkbox-label">
-                  <input type="checkbox" className="input-checkbox" name="newsletter" onChange={handleChange} />
-                  <span>Assinar Newsletter (opcional)</span>
+              <div className="col-6">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="newsletter"
+                    onChange={(e) => setFormData({ ...formData, newsletter: e.target.checked })}
+                  /> Assinar Newsletter (opcional)
                 </label>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <label className="checkbox-label">
-                  <input type="checkbox" className="input-checkbox" name="termos" onChange={handleChange} required />
-                  <span>Concordo com os <a href="/termos" target="_blank">Termos de Uso</a></span>
+              <div className="col-6">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="termos"
+                    required
+                    onChange={(e) => setFormData({ ...formData, termos: e.target.checked })}
+                  /> Concordo com os Termos de Uso
                 </label>
               </div>
             </div>
             <div className="row justify-content-center">
               <div className="col-md-12 text-center">
-                <input type="submit" className="submit-cadastro" value="Criar Conta" />
+                <input type="submit" className="submit-login" value="Criar Conta" />
               </div>
             </div>
             {message && <p className="text-center text-danger">{message}</p>}
             <div className="row justify-content-center mt-3">
               <div className="col-md-12 text-center">
-                <Link to="/login" className="back-login">
+                <Link to="/login" className="create-account">
                   Já tenho conta? Faça Login
                 </Link>
               </div>
