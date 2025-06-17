@@ -152,6 +152,16 @@
   color: #e8c7b4;
 }
 
+.dropdown-item {
+  display: block;
+  padding: 5px 10px;
+  color: #976b48;
+  text-decoration: none;
+}
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #cd8054;
+}
 /* Responsividade */
 @media (max-width: 991px) {
   .header-principal {
@@ -171,7 +181,6 @@
     display: block;
   }
 }
-
 
 @media (min-width: 991px) {
   .sidebar-nav {

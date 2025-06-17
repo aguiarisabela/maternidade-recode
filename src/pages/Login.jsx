@@ -10,25 +10,32 @@ function Login() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { // Mantido 'async' embora a master use .then(), para consistência
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:8080/api/login', {
-        username: username,
-        password: password
-      }, {
-        headers: { 'Content-Type': 'application/json' }
+    console.log('Enviando:', { username, password });
+
+    // Lógica da master para o post e tratamento da resposta
+    axios.post('http://localhost:8080/api/login', {
+      username: username,
+      password: password
+    }, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => {
+        console.log('Resposta do servidor:', response.data);
+        const { message, userId } = response.data; // Desestruturação da resposta
+        setMessage(message);
+        if (message === 'Login bem-sucedido' && userId) {
+          localStorage.setItem('userId', userId); // Armazena o userId
+          // Redireciona para /comunidade-login com o username
+          window.location.href = `/comunidade-login?identifier=${encodeURIComponent(username)}`;
+        }
+      })
+      .catch(error => { // Tratamento de erro da master
+        console.error('Erro na requisição:', error);
+        const errorMsg = error.response?.data?.message || error.message || 'Erro desconhecido';
+        setMessage('Erro ao logar: ' + (typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg)));
       });
-      setMessage(response.data);
-      if (response.data.includes('Bearer')) {
-        const token = response.data; // e.g., "Bearer 2"
-        localStorage.setItem('token', token);
-        window.location.href = '/comunidade-login'; // Redirect after storing token
-      }
-    } catch (error) {
-      const errorMsg = error.response?.data || error.message || 'Erro desconhecido';
-      setMessage('Erro ao logar: ' + (typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg)));
-    }
   };
 
   return (

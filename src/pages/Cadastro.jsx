@@ -11,11 +11,11 @@ function Cadastro() {
     username: '',
     senha: '',
     email: '',
-    fotoPerfil: null,
+    fotoPerfil: null, // Este campo não será enviado com a lógica do master
     dataNascimento: ''
   });
   const [message, setMessage] = useState('');
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState(null); // Este estado é para a prévia da foto, que não será enviada
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -27,37 +27,32 @@ function Cadastro() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => { // Removido 'async' pois o .then() não requer
     e.preventDefault();
-    const token = localStorage.getItem('token') || '';
-    const userData = {
+    const token = localStorage.getItem('token') || ''; // 'token' não está sendo usado nesta versão do master
+    const userData = { // Esta será a 'dataToSend'
       nomeCompleto: formData.nomeCompleto,
       username: formData.username,
       senha: formData.senha,
       email: formData.email,
       dataNascimento: formData.dataNascimento
     };
-    const data = new FormData();
-    data.append('user', new Blob([JSON.stringify(userData)], { type: 'application/json' }));
-    if (formData.fotoPerfil) {
-      data.append('fotoPerfil', formData.fotoPerfil);
-    }
 
-    try {
-      const response = await axios.post('http://localhost:8080/api/register', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': token
+    // Início da resolução do conflito, mantendo a lógica do master
+    axios.post('http://localhost:8080/api/register', userData, { // 'dataToSend' corrigido para 'userData'
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => {
+        setMessage(response.data);
+        if (response.data.includes('sucesso')) {
+          window.location.href = '/comunidade-login'; // Redireciona para /comunidade-login
         }
+      })
+      .catch(error => { // Adicionado .catch() para tratamento de erro, que faltava na versão master original
+        const errorMsg = error.response?.data?.message || error.message || 'Erro desconhecido';
+        setMessage('Erro ao cadastrar: ' + (typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg)));
       });
-      setMessage(response.data);
-      if (response.data.includes('sucesso')) {
-        window.location.href = '/login';
-      }
-    } catch (error) {
-      const errorMsg = error.response?.data?.message || error.message || 'Erro desconhecido';
-      setMessage('Erro ao cadastrar: ' + (typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg)));
-    }
+    // Fim da resolução do conflito
   };
 
   return (
